@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block title %} Вход {% endblock %}
+
+{% block content %}
+    <div class="container bg-light rounded-3 p-3 d-flex justify-content-center align-items-center">
+        <form class="form-signin col-4 gap-2 d-flex flex-column justify-content-center text-center align-items-center"
+              method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="row d-flex flex-row align-items-center justify-content-center mb-1">
+                <img class="" src="{% static 'images/logo.svg' %}" alt="" width="72" height="72">
+                <h1 class="h3 fw-normal">Вход</h1>
+            </div>
+            <div class="form-floating w-100">
+                <input type="text" class="form-control" id="floatingInput" name="username" placeholder="username">
+                <label for="floatingInput">Имя пользователя</label>
+            </div>
+            <div class="form-floating w-100">
+                <input type="password" class="form-control" id="floatingPassword" name="password"
+                       placeholder="Password">
+                <label for="floatingPassword">Пароль</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-dark" type="submit">Войти</button>
+        </form>
+    </div>
+
+{% endblock %}

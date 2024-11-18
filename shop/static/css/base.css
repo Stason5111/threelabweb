@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+body {
+    font-family: "Onest", serif;
+}
+
+.nav-link {
+    position: relative;
+}
+
+.link-hover-animation.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    bottom: 8px;
+    left: 10%;
+    background-color: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    transform: scaleX(0);
+}
+
+.link-hover-animation.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: black;
+    color: white;
+}
+

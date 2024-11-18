@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block title %} Регистрация {% endblock %}
+
+{% block content %}
+    <div class="container p-3 rounded bg-light">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="mx-2 h1 fw-bold mb-5 mt-4">Регистрация</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline d-flex mb-0 flex-column">
+                            <label class="form-label" for="id_username">Ваше имя</label>
+                            {{ register_form.username }}
+                            <div class="form-notch">
+                                <div class="form-notch-leading" style="width: 9px;"></div>
+                                <div class="form-notch-middle" style="width: 71.2px;"></div>
+                                <div class="form-notch-trailing"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline d-flex mb-0 flex-column">
+                            <label class="form-label" for="form3Example3c" style="margin-left: 0;">Ваша почта</label>
+                            {{ register_form.email }}
+                            <div class="form-notch">
+                                <div class="form-notch-leading" style="width: 9px;"></div>
+                                <div class="form-notch-middle" style="width: 68.8px;"></div>
+                                <div class="form-notch-trailing"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline d-flex mb-0 flex-column">
+                            <label class="form-label" for="form3Example4c" style="margin-left: 0;">Пароль (Не меньше 8, и разные символы)</label>
+                            {{ register_form.password1 }}
+                            <div class="form-notch">
+                                <div class="form-notch-leading" style="width: 9px;"></div>
+                                <div class="form-notch-middle" style="width: 64.8px;"></div>
+                                <div class="form-notch-trailing"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline d-flex mb-0 flex-column">
+                            <label class="form-label" for="form3Example4cd" style="margin-left: 0;">Повторите
+                                пароль</label>
+                            {{ register_form.password2 }}
+                            <div class="form-notch">
+                                <div class="form-notch-leading" style="width: 9px;"></div>
+                                <div class="form-notch-middle" style="width: 134.4px;"></div>
+                                <div class="form-notch-trailing"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex mx-3 mb-3 mb-lg-4">
+                        <button type="submit" class="btn btn-dark btn-lg">Зарегистрироваться</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                <img src="{% static 'images/backgrounds/about_bg.jpg' %}"
+                     class="img-fluid rounded" alt="Sample image">
+            </div>
+        </div>
+    </div>
+{% endblock %}

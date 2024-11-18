@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/products/product_detail.css' %}">
+{% endblock %}
+
+{% block title %} {{ product }} {% endblock %}
+
+{% block content %}
+    <div class="container row">
+       <div class="col-8 d-flex justify-content-center">
+           <div class="card gx-0 col border-0 p-5">
+                <img class="card-img object-fit-cover" src="{{ product.image.url }}"
+                     alt="Card image">
+            </div>
+       </div>
+        <div class="col-4 bg-light p-4 rounded-3 d-flex flex-column align-items-center">
+            <h3>{{ product.manufacturer }}</h3>
+            <p class="text-muted mb-2">{% if product.gender %}
+            	{{ product.gender }}
+            {% endif %} {{ product.category.singular_name }} {{ product.name }}</p>
+            <p class="text-muted mt-1">{{ product.color }} цвет</p>
+            <hr class="border-2 w-100 mt-0">
+            <h3>{{ product.price }} ₽</h3>
+            <a class="btn btn-dark container-fluid" href="{% url "add_to_cart" product.id %}">Добавить в корзину <i class="bi-bag-fill"></i></a>
+            <hr class="border-2 w-100">
+            <p class="text-muted">{{ product.description }}</p>
+        </div>
+    </div>
+{% endblock %}
